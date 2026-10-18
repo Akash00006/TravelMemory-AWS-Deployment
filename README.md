@@ -15,7 +15,7 @@ backend on AWS, with MongoDB Atlas used as the database.
 - Version control: Git and GitHub (git version 2.53.0) 
 
 
-# 4. Architecture
+# 3. Architecture
 The intended request flow is shown below:
                          <img width="820" height="572" alt="Screenshot 2026-10-18 204120" src="https://github.com/user-attachments/assets/26b74b5f-a0f0-4bae-ac12-a513cd2912ff" />
 
@@ -27,19 +27,20 @@ database operations.
 Architecture note: This diagram represents the intended
 architecture. Confirm that target groups are healthy and the API
 connection works before describing the full architecture as verified.
-5. AWS Resources
+
+# 4. AWS Resources
 Fill in the actual resource names and values from your AWS account.
   Resource                 Name / Value
-  AWS Region               [Enter region, e.g. ap-south-1]
-  Frontend EC2 instances   [Enter instance IDs or names]
-  Backend EC2 instances    [Enter instance IDs or names]
-  Frontend target group    [Enter target group name]
-  Backend target group     [Enter target group name]
-  Frontend ALB DNS name    [Enter frontend ALB DNS name]
-  Backend ALB DNS name     [Enter backend ALB DNS name]
-  MongoDB Atlas cluster    [Enter cluster name; no credentials]
-  Custom domain            Not configured through Cloudflare
-6. MongoDB Atlas Configuration
+  AWS Region               [ap-south-1b]
+  Frontend EC2 instances   [frontend-master]
+  Backend EC2 instances    [backend-master]
+  Frontend target group    [travelmemory-frontend-tg]
+  Backend target group     [travelmemory-backend-tg-3001]
+  Frontend ALB DNS name    [travelmemory-frontend-alb]
+  Backend ALB DNS name     [travelmemory-backend-alb]
+  MongoDB Atlas cluster    [mongodb+srv://akashkumardutta7_db_user:<db_password>@akashcluster.my5l18e.mongodb.net/?appName=akashcluster]
+  
+# 5. MongoDB Atlas Configuration
 MongoDB Atlas is used as the application's database service.
 1. Create or select a MongoDB Atlas cluster.
 2. Create a database user with the required database permissions.
