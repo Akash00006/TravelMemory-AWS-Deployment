@@ -4,10 +4,6 @@
 TravelMemory is a web application for viewing and adding travel
 experiences. This project documents deployment of the frontend and
 backend on AWS, with MongoDB Atlas used as the database.
-GitHub repository:
-https://github.com/Akash00006/TravelMemory-AWS-Deployment
-Replace placeholders with the actual values from your AWS environment.
-Only mark a deployment step as successful after testing it.
 
 # 2. Technology Stack
 - Frontend: React / JavaScript
