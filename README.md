@@ -1,5 +1,5 @@
-TravelMemory AWS Deployment Documentation
-1. Project Title
+# TravelMemory AWS Deployment Documentation
+# 1. Project Title
 TravelMemory -- Full-Stack Application Deployment on AWS
 2. Project Overview
 TravelMemory is a web application for viewing and adding travel
@@ -10,7 +10,7 @@ https://github.com/Akash00006/TravelMemory-AWS-Deployment
 Replace placeholders with the actual values from your AWS environment.
 Only mark a deployment step as successful after testing it.
 
-3. Technology Stack
+# 3. Technology Stack
 - Frontend: React / JavaScript
 - Backend: Node.js / Express
 - Database: MongoDB Atlas
@@ -23,27 +23,9 @@ Confirm the exact versions and services used in your environment before
 submitting.
 4. Architecture
 The intended request flow is shown below:
-                         Users / Web Browser
-                                  |
-                                  v
-                       Frontend Application ALB
-                                  |
-                       -----------------------
-                       |                     |
-                       v                     v
-                  Frontend EC2 1        Frontend EC2 2
-                       |
-                       | API requests
-                       v
-                       Backend Application ALB
-                                  |
-                       -----------------------
-                       |                     |
-                       v                     v
-                  Backend EC2 1         Backend EC2 2
-                       |
-                       v
-                         MongoDB Atlas
+                         <img width="820" height="572" alt="Screenshot 2026-10-18 204120" src="https://github.com/user-attachments/assets/26b74b5f-a0f0-4bae-ac12-a513cd2912ff" />
+
+                      
 The frontend ALB distributes web traffic to frontend instances. API
 requests from the frontend go to the backend ALB, which distributes
 requests to backend instances. The backend connects to MongoDB Atlas for
