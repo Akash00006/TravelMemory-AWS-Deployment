@@ -32,12 +32,19 @@ connection works before describing the full architecture as verified.
 Fill in the actual resource names and values from your AWS account.
   Resource                 Name / Value
   AWS Region               [ap-south-1b]
+  
   Frontend EC2 instances   [frontend-master]
+  
   Backend EC2 instances    [backend-master]
+  
   Frontend target group    [travelmemory-frontend-tg]
+  
   Backend target group     [travelmemory-backend-tg-3001]
+  
   Frontend ALB DNS name    [travelmemory-frontend-alb]
+  
   Backend ALB DNS name     [travelmemory-backend-alb]
+  
   MongoDB Atlas cluster    [mongodb+srv://akashkumardutta7_db_user:<db_password>@akashcluster.my5l18e.mongodb.net/?appName=akashcluster]
   
 # 5. MongoDB Atlas Configuration
