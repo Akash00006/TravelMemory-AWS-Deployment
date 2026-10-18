@@ -47,74 +47,112 @@ Fill in the actual resource names and values from your AWS account.
   
   MongoDB Atlas cluster    [mongodb+srv://akashkumardutta7_db_user:<db_password>@akashcluster.my5l18e.mongodb.net/?appName=akashcluster]
 
-  ## Deployment Steps
+# 5. MongoDB Atlas Configuration
 
-1.  Configure MongoDB Atlas database access and network rules.
-2.  Deploy the backend to EC2 and securely configure environment
-    variables.
-3.  Configure the backend target group and ALB; check target health.
-4.  Deploy the frontend to EC2 and configure its backend API URL.
-5.  Configure the frontend target group and ALB.
-6.  Open the frontend ALB DNS name and test the app.
+MongoDB Atlas is used as the application's database service.
 
-Use the actual ports, start commands, and health-check paths for your
-project.
+1.  Create or select a MongoDB Atlas cluster.
+2.  Create a database user with the required database permissions.
+3.  Configure Atlas network access to allow connections from the backend
+    environment. Restrict access to required IP addresses or network
+    ranges where possible.
+4.  Configure the application's MongoDB connection string on the
+    backend.
 
-## Verification Checklist
+# 6. Backend Deployment on EC2
 
--   [ ] Frontend opens through the frontend ALB DNS name.
--   [ ] Frontend and backend target groups show healthy targets.
--   [ ] Frontend API requests reach the backend.
--   [ ] Backend connects to MongoDB Atlas.
--   [ ] A new travel experience saves and appears in the UI.
+The backend runs on EC2 and communicates with MongoDB Atlas.
 
-Mark tests as successful only after you have verified them.
+General deployment steps:
 
-## DNS and Screenshots
+1.  Connect to the backend EC2 instance using SSH.
+2.  Install the required Node.js runtime and project dependencies.
+3.  Place the backend source code on the instance.
+4.  Configure required environment variables securely.
+5.  Start the backend using the project's documented start command or
+    process manager.
+6.  Configure the backend target group to use the correct instance port
+    and health-check path.
+7.  Confirm the backend target is healthy in the EC2 console.
+8.  Test the backend API locally on the instance and through the backend
+    ALB.
 
-**Cloudflare DNS was not configured.** Use the frontend ALB DNS name for
-testing if publicly accessible. Use HTTPS only if an HTTPS listener and
-valid certificate are configured.
 
-Add screenshots of the app, target-group health, load balancers, saved
-experience, and GitHub repository. Example:
+# 7. Frontend Deployment on EC2
 
-``` markdown
-![TravelMemory homepage](screenshots/travelmemory-homepage.png)
+The frontend provides the user interface for TravelMemory.
+
+1.  Connect to the frontend EC2 instance using SSH.
+2.  Install the required Node.js runtime and project dependencies.
+3.  Configure the frontend to call the backend ALB or the correct API
+    endpoint.
+4.  Build the frontend if the project uses a production build.
+5.  Serve the frontend using the configured web server or application
+    process.
+6.  Configure the frontend target group and its health check.
+7.  Confirm the frontend target is healthy in the EC2 console.
+8.  Open the frontend ALB DNS name in a browser and test the
+    application.
+
+
+# 8. Load Balancers and Target Groups
+
+Two Application Load Balancers are intended for this architecture:
+
+-   **Frontend ALB:** Receives browser traffic and forwards it to the
+    frontend target group.
+-   **Backend ALB:** Receives API traffic and forwards it to the backend
+    target group.
+
+
+# 9. DNS and Custom Domain
+
+**Cloudflare DNS configuration was skipped.**
+
+The frontend ALB is publicly
+accessible and its security settings allow access, use its DNS name for
+testing:
+
+``` text
+http://travelmemory-frontend-alb-1354368306.ap-south-1.elb.amazonaws.com
 ```
 
-Hide all credentials and secrets in screenshots.
 
-## Troubleshooting
 
--   **Frontend unavailable:** Check EC2 status, logs, ALB listener,
-    target health, and security groups.
--   **API errors:** Check the frontend API URL, backend process, port,
-    and target health.
--   **MongoDB errors:** Check the connection string, database
-    permissions, and Atlas network access.
--   **Git push errors:** Check `git status`, `git branch`, and
-    `git remote -v`.
+# 10. Screenshots 
 
-## Security
+1.  TravelMemory frontend opened through the frontend ALB DNS name.
+<img width="1920" height="948" alt="Screenshot (121)" src="https://github.com/user-attachments/assets/fa5f56d1-6f47-4dec-a625-606410191d82" />
 
--   Never commit `.env` files, passwords, AWS keys, or SSH private keys.
--   Restrict security groups and Atlas network access.
--   If a secret was committed, rotate it; removing it in a later commit
-    does not erase it from Git history.
 
-## Push Documentation to GitHub
+2.  Frontend target group showing target health.
+<img width="1920" height="1080" alt="Screenshot (116)" src="https://github.com/user-attachments/assets/31c58161-365c-4bb7-b078-edccc7da9b76" />
 
-Save as `README.md` in the repository root, then run:
 
-``` bash
-git add README.md
-git commit -m "Add deployment documentation"
-git push origin main
-```
+3.  Backend target group showing target health.
+<img width="1920" height="1080" alt="Screenshot (115)" src="https://github.com/user-attachments/assets/9d6e513c-488b-42af-bbf6-2394ec85f2af" />
 
-Before submission, replace placeholders, add real screenshots, and
-update the checklist. Do not claim untested steps were successful.
 
-  
+4.  Frontend and backend load balancers in the EC2 console.
+<img width="1920" height="1080" alt="Screenshot (117)" src="https://github.com/user-attachments/assets/e81ed48c-3b82-49e7-854a-c81be4e8c158" />
+
+   
+5.  MongoDB Atlas cluster overview
+<img width="1920" height="1080" alt="Screenshot (97)" src="https://github.com/user-attachments/assets/b9f40a24-f853-4e39-bcf2-161a17f9fd08" />
+
+   
+6.  A newly added travel experience displayed in the application.
+<img width="1660" height="920" alt="Screenshot (122)" src="https://github.com/user-attachments/assets/4ad33077-4a50-4370-82ae-846c54ce79f3" />
+
+
+
+
+# 11. Deployment Summary
+
+This project documents deployment of the TravelMemory frontend and
+backend using AWS EC2 instances, Application Load Balancers, and MongoDB
+Atlas. The architecture separates frontend and backend traffic and uses
+MongoDB Atlas as the database service.
+
+
 
