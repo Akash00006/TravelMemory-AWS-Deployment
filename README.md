@@ -1,7 +1,6 @@
 # TravelMemory AWS Deployment Documentation
-# 1. Project Title
-TravelMemory -- Full-Stack Application Deployment on AWS
-2. Project Overview
+
+# 1. Project Overview
 TravelMemory is a web application for viewing and adding travel
 experiences. This project documents deployment of the frontend and
 backend on AWS, with MongoDB Atlas used as the database.
@@ -10,18 +9,17 @@ https://github.com/Akash00006/TravelMemory-AWS-Deployment
 Replace placeholders with the actual values from your AWS environment.
 Only mark a deployment step as successful after testing it.
 
-# 3. Technology Stack
+# 2. Technology Stack
 - Frontend: React / JavaScript
-- Backend: Node.js / Express
+- Backend: Node.js / Express (npm - 10.8.2 / node version -v20.20.2)
 - Database: MongoDB Atlas
 - Cloud platform: Amazon Web Services (AWS)
 - Compute: Amazon EC2
 - Load balancing: Application Load Balancer (ALB)
-- Version control: Git and GitHub
-- DNS / custom domain: Cloudflare DNS was not configured.
-Confirm the exact versions and services used in your environment before
-submitting.
-4. Architecture
+- Version control: Git and GitHub (git version 2.53.0) 
+
+
+# 4. Architecture
 The intended request flow is shown below:
                          <img width="820" height="572" alt="Screenshot 2026-10-18 204120" src="https://github.com/user-attachments/assets/26b74b5f-a0f0-4bae-ac12-a513cd2912ff" />
 
